@@ -1,55 +1,80 @@
-#  XSnip Recon Tool
+#  XSnip v3 
 
-XSnip is a **Bash-based reconnaissance automation tool** built for **bug bounty hunters and red teamers**.  
-It automates **subdomain enumeration, URL discovery, vulnerability scanning, and report generation**, making recon faster and more efficient.
+XSnip v3 is a **hyper-parallel reconnaissance pipeline** designed for **serious bug bounty hunters and red teamers**.  
+It automates **subdomain enumeration, live host probing, URL & endpoint discovery, secret detection, nuclei scanning, and report generation** at scale.
 
 ---
 
-##  Features
-✅ **Subdomain Enumeration** – Uses Subfinder, Assetfinder, and more  
-✅ **URL Discovery** – Extracts historical URLs from Wayback Machine and gau  
-✅ **Vulnerability Scanning** – Integrated Nuclei & GF patterns for fast checks  
-✅ **Port Scanning** – Nmap integration for open ports and service detection  
-✅ **Automated Reports** – Generates markdown-based recon reports  
+## 🚀 Features
+✅ **Hyper-parallel execution** with GNU Parallel  
+✅ **Subdomain Enumeration** – Subfinder, Amass, DNSx  
+✅ **Live Host Probing** – HTTPx with titles, tech detection, status codes  
+✅ **Endpoint Discovery** – Gau, Wayback, Katana crawler, JS endpoint extraction  
+✅ **Secret Hunting** – Git-hound, Trufflehog3 integration  
+✅ **Vulnerability Scanning** – Nuclei (Critical/High findings prioritized)  
+✅ **Reporting** – Generates a detailed Markdown report  
+✅ **Optional Integrations** – Gowitness screenshots, FavUp favicon hashing, Slack webhook alerts  
 
 ---
 
 ## 📦 Installation
 ```bash
-git clone https://github.com/0xMutairi/XSnip.git
-cd XSnip
+git clone https://github.com/0xMutairi/xsnip.git
+cd xsnip
 chmod +x xsnip.sh
 ```
 
 ---
 
-##  Usage
+##   Usage
 ```bash
-./xsnip.sh target.com
+./xsnip.sh <target.com> [options]
+
+Options:
+  -c, --config <file>   Custom YAML config (default: xsnip.yml)
+  -o, --outdir <dir>    Output directory (default: xsnip-<target>-<timestamp>)
+  --fast                Skip heavy modules (Amass, Katana, Gowitness)
+  --update              Update to latest version
 ```
 
 ---
 
 ## 📊 Workflow
-1. Subdomain enumeration → Passive + Active
-2. URL collection → Gau + Waybackurls
-3. Vulnerability scanning → Nuclei + GF patterns
-4. Report generation in Markdown format
+1️⃣ **Subdomain Enumeration** → Subfinder, Amass (if installed)  
+2️⃣ **DNS Resolution** → DNSx filters valid domains  
+3️⃣ **Live Host Probing** → HTTPx collects titles, status codes, technologies  
+4️⃣ **URL & Endpoint Discovery** → Gau, Wayback, Katana crawler, JS endpoint parsing  
+5️⃣ **Secret Detection** → Git-hound, Trufflehog3 (optional with GitHub token)  
+6️⃣ **Vulnerability Scanning** → Nuclei with selected tags/severities  
+7️⃣ **Screenshots & Favicons** → Gowitness & FavUp (optional)  
+8️⃣ **Report Generation** → Markdown summary (`report.md`)  
 
 ---
 
 ## 🛠️ Tech Stack
-- **Bash**
-- Nmap
+- **Bash + GNU Parallel**
+- Subfinder, Amass, DNSx
+- HTTPx, Gau, Waybackurls
+- Katana (optional)
+- Git-hound, Trufflehog3
 - Nuclei
-- Subfinder
-- HTTPx
-- GF patterns
+- Gowitness (optional)
 
 ---
 
-##  Impact
-XSnip has been used to **discover real-world vulnerabilities** in bug bounty programs and **streamline reconnaissance workflows** for penetration testing.
+## 📜 Output
+📁 **Report:** `report.md` (Markdown summary)  
+📄 **Supporting Files:**  
+- `subs_all.txt` – All discovered subdomains  
+- `resolved.txt` – Valid DNS-resolved subdomains  
+- `live.txt` – Live hosts from HTTPx  
+- `endpoints.txt` – Extracted endpoints  
+- `nuclei.txt` – Vulnerability scan results  
+
+---
+
+##   Impact
+XSnip v3 **streamlines reconnaissance at scale**, enabling faster **attack surface mapping and vulnerability discovery** for bug bounty and red team engagements.
 
 ---
 
