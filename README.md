@@ -16,7 +16,7 @@ It automates **subdomain enumeration, URL discovery, vulnerability scanning, and
 
 ## 📦 Installation
 ```bash
-git clone https://github.com/yourusername/XSnip.git
+git clone https://github.com/0xMutairi/XSnip.git
 cd XSnip
 chmod +x xsnip.sh
 ```
